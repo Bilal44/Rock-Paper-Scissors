@@ -37,6 +37,7 @@ public class RockPaperScissors {
             System.out.println("Please enter a valid choice");
             validInput();
         } else {System.out.println("You have chosen " +userChoice);
+            totalGames++;
             play();
         }
         
@@ -53,35 +54,27 @@ public class RockPaperScissors {
         
         if ((computerChoice == 0) && (userChoice.equals("R"))) {
             System.out.println("Computer chose Rock, it's a draw!");
-            totalGames++;
             drawGames++;
         } else if ((computerChoice == 1) && (userChoice.equals("R"))) {
             System.out.println("Computer chose Paper, you lose!");
-            totalGames++;
             computerWin++;
         } else if ((computerChoice == 2) && (userChoice.equals("R"))) {
             System.out.println("Computer chose Scissors, you win!");
-            totalGames++;
             userWin++;
         } else if ((computerChoice == 0) && (userChoice.equals("P"))) {
             System.out.println("Computer chose Rock, you win!");
-            totalGames++;
             userWin++;
         } else if ((computerChoice == 1) && (userChoice.equals("P"))) {
             System.out.println("Computer chose Paper, it's a draw!");
-            totalGames++;
             drawGames++;
         } else if ((computerChoice == 2) && (userChoice.equals("P"))) {
             System.out.println("Computer chose Scissors, you lose!");
-            totalGames++;
             computerWin++;
         } else if ((computerChoice == 0) && (userChoice.equals("S"))) {
             System.out.println("Computer chose Rock, you lose!");
-            totalGames++;
             computerWin++;
         } else if ((computerChoice == 1) && (userChoice.equals("S"))) {
             System.out.println("Computer chose Paper, you win!");
-            totalGames++;
             userWin++;
         } else {
             System.out.println("Computer chose Scissors, it's a draw!");
