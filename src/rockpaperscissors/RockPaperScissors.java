@@ -13,6 +13,7 @@ public class RockPaperScissors {
     //decalre global variable
     public static Scanner scan1 = new Scanner(System.in);
     public static String userChoice;
+    public static String strUserchoice;
     public static String continuePlaying;
     public static int computerChoice;
     public static int computerWin;
@@ -22,9 +23,27 @@ public class RockPaperScissors {
 
     
     public static void main(String[] args) {
-        validInput ();
+        mainMenu ();
     }
     
+    public static void mainMenu() {
+        System.out.println("Please enter the numbers of games you would like to play, press 0 to quit");
+        
+        // while loop to verify that user has entered an integer
+        while (!scan1.hasNextInt()) {
+            System.out.println("Please enter a valid number, or press 0 to quit");
+            scan1.nextLine();
+            }
+        int gameNum;
+        gameNum = scan1.nextInt();
+        
+        //while loop to play desired number of games
+        while (gameNum > 0) {
+            gameNum--;
+            validInput();
+        } 
+        playAgain(); //asks if user still want to play more games once inital number of games are over
+    }
     
     //method to check for valid input from user and start point of the game
     public static void validInput() {
@@ -32,13 +51,30 @@ public class RockPaperScissors {
         userChoice = scan1.next();
         userChoice = userChoice.toUpperCase(); //changes userChoice to uppercase if user enters lowercare alphabets
         
-        
-        if (!((userChoice.equals("R")) || (userChoice.equals("P")) || (userChoice.equals("S")))) {
-            System.out.println("Please enter a valid choice");
-            validInput();
-        } else {System.out.println("You have chosen " +userChoice);
-            totalGames++;
-            play();
+        switch (userChoice) {
+                case "R":
+                strUserchoice = "Rock";
+                System.out.println("You have chosen " +strUserchoice);
+                totalGames++;
+                play();
+                break;
+                
+                case "P":
+                strUserchoice = "Paper";
+                System.out.println("You have chosen " +strUserchoice);
+                totalGames++;
+                play();
+                break;
+                
+                case "S":
+                strUserchoice = "Scissors";
+                System.out.println("You have chosen " +strUserchoice);
+                totalGames++;
+                play();
+                break;
+                
+                default: System.out.println("Please enter a valid choice");
+                break;            
         }
         
         
@@ -49,7 +85,7 @@ public class RockPaperScissors {
      public static void play() {
          
         //generates computer choice with random int, 0 = Rock, 1 = Paper and 2 = Scissors 
-        computerChoice = (int)(Math.random()*3);
+        computerChoice = (int)(Math.floor(Math.random()*3));
         
         
         if ((computerChoice == 0) && (userChoice.equals("R"))) {
@@ -81,9 +117,6 @@ public class RockPaperScissors {
             totalGames++;
             drawGames++;
     }
-        
-        
-        playAgain(); //calls continue playing method
 }
      
      //method to offer user choice to continue playing
@@ -98,7 +131,7 @@ public class RockPaperScissors {
         System.out.println("Invalid Choice. Please enter either Y or N to continue.");
         playAgain();
         } else if (continuePlaying.equals("Y")) {
-            validInput(); //calls initiate game method for positive answer
+            mainMenu(); //calls initiate game method for positive answer
         } else {
         /*calculates and prints total number of games, drawn games, and games
         won by user and computer from play() method at the end of the game*/
