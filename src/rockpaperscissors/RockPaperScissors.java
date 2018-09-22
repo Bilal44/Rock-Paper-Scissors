@@ -114,7 +114,6 @@ public class RockPaperScissors {
             userWin++;
         } else {
             System.out.println("Computer chose Scissors, it's a draw!");
-            totalGames++;
             drawGames++;
     }
 }
