@@ -49,7 +49,7 @@ public class RockPaperScissors {
     public static void validInput() {
         System.out.println("Let's play Rock, Papers and Scissors. Please make a choice by typing R, P or S.");
         userChoice = scan1.next();
-        userChoice = userChoice.toUpperCase(); //changes userChoice to uppercase if user enters lowercare alphabets
+        userChoice = userChoice.toUpperCase(); //changes userChoice to uppercase if user enters lowercase alphabets
         
         switch (userChoice) {
                 case "R":
@@ -74,6 +74,7 @@ public class RockPaperScissors {
                 break;
                 
                 default: System.out.println("Please enter a valid choice");
+                validInput();
                 break;            
         }
         
@@ -133,7 +134,7 @@ public class RockPaperScissors {
             mainMenu(); //calls initiate game method for positive answer
         } else {
         /*calculates and prints total number of games, drawn games, and games
-        won by user and computer from play() method at the end of the game*/
+        won by user and computer from mainMenu() method at the end of the game*/
         System.out.println("Thanks for playing, you won " +userWin+ " games, computer won " +computerWin+ " games out of total " +totalGames+ " games. " +drawGames+ " games were drawn.");
         }
         
